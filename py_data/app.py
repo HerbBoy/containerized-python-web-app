@@ -16,7 +16,7 @@ def manage_files():
     content = request.get_json()
     if content['action'] == 'download':
         get_external_file()
-        return send_from_directory(directory='', filename='sample-text-file.txt')
+        return send_from_directory(directory='', path='', filename='sample-text-file.txt')
     elif content['action'] == "read":
         sample_content = read_external_file()
         return jsonify(sample_content), 200

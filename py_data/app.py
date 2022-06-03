@@ -4,10 +4,8 @@ import requests
 from flask import Flask
 from flask import request
 from flask import jsonify
-from flask import Response
 from flask import send_from_directory
 from flask import abort
-# from flask import render_template
 
 from os import environ
 
@@ -25,10 +23,6 @@ def manage_files():
     elif content['action'] == "read":
         sample_content = read_external_file()
         return jsonify(sample_content), 200
-
-# @app.errorhandler(500)
-# def internal_error(error):
-#     return render_template('500.html'), 500
 
 def get_external_file():
     url = 'https://www.learningcontainer.com/wp-content/uploads/2020/04/sample-text-file.txt'

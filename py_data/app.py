@@ -1,4 +1,5 @@
 import logging
+import logging.handlers
 import requests
 
 from flask import Flask
@@ -46,6 +47,7 @@ def read_external_file():
     return sample_content
 
 if __name__ == '__main__':
+    logging.basicConfig(filename='/var/log/demo.log',level=logging.DEBUG)
     HOST = environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(environ.get('SERVER_PORT', '5555'))

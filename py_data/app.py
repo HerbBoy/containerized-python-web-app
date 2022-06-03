@@ -23,6 +23,7 @@ def manage_files():
     elif content['action'] == "read":
         sample_content = read_external_file()
         return jsonify(sample_content), 200
+    return abort(jsonify(message="Invalid Payload"), 400)
 
 def get_external_file():
     url = 'https://www.learningcontainer.com/wp-content/uploads/2020/04/sample-text-file.txt'

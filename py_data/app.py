@@ -12,6 +12,7 @@ from os import environ
 
 app = Flask(__name__)
 
+# function to handle required tasking defined by project requirements
 @app.route('/manage_file', methods = ['GET'])
 def manage_files():
     content = request.get_json()
@@ -28,7 +29,8 @@ def manage_files():
         return jsonify(sample_content), 200
 
     return abort(jsonify(message="Invalid Payload"), 400)
-    
+
+# Leverages request module to run a get request to download a file.    
 def get_external_file():
     url = 'https://www.learningcontainer.com/wp-content/uploads/2020/04/sample-text-file.txt'
     
@@ -38,6 +40,7 @@ def get_external_file():
         f.write(sample_text_file.content)
     return 
 
+# Calls function to get file (does this to ensure its present for reading) then provides output back to user.
 def read_external_file():
     get_external_file()
 
@@ -46,11 +49,13 @@ def read_external_file():
     
     return sample_content
 
+# Main function (how when called it executes.)
 if __name__ == '__main__':
     logging.basicConfig(filename='/var/log/demo.log',level=logging.DEBUG)
+    
     HOST = environ.get('SERVER_HOST', '0.0.0.0')
     try:
-        PORT = int(environ.get('SERVER_PORT', '80'))
+        PORT = int(environ.get('SERVER_PORT', '5000'))
     except ValueError:
-        PORT = 80
+        PORT = 5000
     app.run(HOST, PORT)

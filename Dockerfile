@@ -8,7 +8,7 @@ WORKDIR /demo
 
 # Setting Default Argument values
 ARG CERT=cert.pem
-ARG KEY=key.pem
+ARG PRIVATE_KEY=priv_key.pem
 
 # Update all base packages and ensure python3 is installed
 RUN yum update -y
@@ -26,7 +26,7 @@ COPY demo.sh /demo/
 
 # Putting Certs into place (overwriting names to account for hardcoded certs values - no the most prod)
 COPY $CERT /demo/cert.pem
-COPY $KEY /demo/key.pem
+COPY $PRIVATE_KEY /demo/priv_key.pem
 
 # Make entrypoint executable
 RUN chmod +x /demo/demo.sh

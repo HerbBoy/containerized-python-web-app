@@ -51,6 +51,7 @@ def read_external_file():
 
 # Main function (how when called it executes.)
 if __name__ == '__main__':
+    #This line ensures it logs to a file if natively run outside of the use of gunicorn
     logging.basicConfig(filename='/var/log/demo.log',level=logging.DEBUG)
     
     HOST = environ.get('SERVER_HOST', '0.0.0.0')

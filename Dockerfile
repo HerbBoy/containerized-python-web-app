@@ -3,9 +3,6 @@ FROM redhat/ubi8:8.5
 # Creating Demo Dir
 RUN mkdir -p /demo
 
-#Setting Working Dir to Flask app "demo"
-WORKDIR /demo
-
 # Setting Default Argument values
 ARG CERT=cert.pem
 ARG PRIVATE_KEY=priv_key.pem
@@ -35,4 +32,4 @@ RUN chmod +x /demo/demo.sh
 EXPOSE 5000
 
 # upon start what is executed
-ENTRYPOINT [ "./demo.sh" ]
+ENTRYPOINT [ "/demo/demo.sh" ]

@@ -8,9 +8,6 @@
       format: docker
   register: built_id
 
-# - debug:
-#     msg: "{{ built_id.image[0].Id }}"
-
 - name:
   set_fact:
     container_build_image_id:  "{{ built_id.image[0].Id | list }}"

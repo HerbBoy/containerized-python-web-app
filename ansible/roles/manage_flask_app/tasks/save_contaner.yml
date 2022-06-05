@@ -2,5 +2,5 @@
 - name: "Podman Export | Exporting {{ container_name }} to {{ export_location }}"
   containers.podman.podman_save:
     dest: "{{ export_location }}"
-    image: "{{ container_name }}"
+    image: "{{ container_image_id }}"
     force: no

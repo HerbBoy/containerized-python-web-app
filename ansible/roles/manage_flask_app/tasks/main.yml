@@ -26,7 +26,7 @@
     - build_and_run
 
 # Used to export a container image from local registry to file 
-- import_tasks: export_contaner.yml
+- import_tasks: save_contaner.yml
   tags:
     - never
-    - export
+    - save

@@ -9,8 +9,7 @@
   containers.podman.podman_container:
     name: "{{ container_name }}" # equal to cli arg "--name"
     image: "{{ container_image_id }}" # equal to cli arg of local registry container tag name
-    state: present
-    restart: yes
+    state: started
     ports:
         - "5000:5000" # equal to cli arg "-p"
     volume:

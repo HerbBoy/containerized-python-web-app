@@ -4,7 +4,7 @@ Run: ```ansible-galaxy collection install containers.podman```
 
 ## Note Ensure Variables are set ##
 
-# To encrypt vauld
+# To encrypt vault
 
 ```ansible-vault encrypt vault.yml```
 

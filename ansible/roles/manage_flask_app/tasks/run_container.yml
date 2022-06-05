@@ -1,0 +1,17 @@
+---
+- name: "Creating Peristent Storage for {{ container_name }} logs"
+  ansible.builtin.file:
+    path: "{{ persistent_logs_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: "Podman Run | Ensure {{ container_name }} is up and running"
+  containers.podman.podman_container:
+    name: "{{ container_name }}" # equal to cli arg "--name"
+    image: "{{ container_image_id }}" # equal to cli arg of local registry container tag name
+    state: present
+    restart: yes
+    ports:
+        - "5000:5000" # equal to cli arg "-p"
+    volume:
+      - persistent_logs_dir:/var/log/

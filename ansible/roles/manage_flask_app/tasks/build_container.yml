@@ -1,0 +1,20 @@
+---
+- name: "Podman Build | Building {{ container_name }} container image"
+  containers.podman.podman_image:
+    name: "{{ container_name }}"
+    path: "{{ container_build_file_path }}"
+    build:
+      cache: yes
+      format: docker
+  register: built_id
+
+# - debug:
+#     msg: "{{ built_id.image[0].Id }}"
+
+- name:
+  set_fact:
+    container_build_image_id:  "{{ built_id.image[0].Id | list }}"
+
+- name:
+  set_fact:
+    container_image_id: "{{ container_build_image_id[0:12] | join('') }}" # Overwrites vaulted variable by design. Enables Dynamic build and run.

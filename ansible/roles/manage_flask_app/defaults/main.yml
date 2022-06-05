@@ -1,0 +1,14 @@
+---
+# Role Variables
+container_name: "flask_app3"
+container_image_id: "{{ vault_container_image_id }}" # If being loaded (vault variable should be set to expected Image ID)
+persistent_logs_dir: "/tmp/demo"
+
+# Dockerfile Location
+container_build_file_path: "/mnt/c/Users/starfighter/containerized-python-web-app"
+
+# Location of a downloaded container image - leverages container_name var for consistency
+container_tarball_path: "/home/pariss/{{ container_name }}.tar"
+
+# Location to export built container
+export_location: "/tmp/{{ container_name }}.tar"

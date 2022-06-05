@@ -1,0 +1,32 @@
+---
+- include_vars: vault.yml
+  tags:
+    - always
+
+# Used to build container image from source
+- import_tasks: build_container.yml
+  tags:
+    - never
+    - build
+    - build_and_run
+
+# Used for externally downloaded container images
+- import_tasks: load_container.yml
+  tags:
+    - never
+    - load
+    - load_and_run
+
+# Used to standup container
+- import_tasks: run_container.yml
+  tags:
+    - never
+    - run
+    - load_and_run
+    - build_and_run
+
+# Used to export a container image from local registry to file 
+- import_tasks: export_contaner.yml
+  tags:
+    - never
+    - export

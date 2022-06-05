@@ -1,0 +1,16 @@
+---
+- name: "Podman Load | Loading {{ container_name }} into local registry"
+  containers.podman.podman_load:
+    input: "{{ container_tarball_path }}"
+  register: loaded_image
+
+- name:
+  set_fact:
+    loaded_image_id:  "{{ loaded_image.image.Id | list }}"
+
+- name:
+  set_fact:
+    container_image_id: "{{ loaded_image_id[0:12] | join('') }}" # Overwrites vaulted variable by design. Enables Dynamic load and run.
+  vars:
+    load_image_id_list: "{{ loaded_image_id[0:12] | join('') }}"
+  when: container_image_id == load_image_id_list

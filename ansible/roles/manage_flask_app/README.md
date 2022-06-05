@@ -14,3 +14,10 @@ Build from source and run: ```ansible-playbook manage_flask_app.yml --tag build_
 
 Load from tarball and run: ```ansible-playbook manage_flask_app.yml --tag load_and_run --ask-vault```
 
+# All Tags:
+- build (builds container image from source)
+- load (loads container tarball)
+- run (standsup container)
+- save (saves container image to tarball)
+- load_and_run (Load from tarball and run)
+- build_and_run (Build from source and run)

@@ -5,7 +5,7 @@
     path: "{{ container_build_file_path }}"
     build:
       cache: yes
-      format: docker
+      format: oci
   register: built_id
 
 - name:

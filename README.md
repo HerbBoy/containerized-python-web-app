@@ -5,8 +5,10 @@
 - [x] Leverages Gunicorn for HTTP serivice
 - [x] Logs data to syslog (in real world I would want to point this to a syslog server or have a SIEM like splunk have an forwarder monitor the local syslog)
 - [x] Leverages SSL (self signed at this point with ability to dynamically take it properly signed certificates).
-- [ ] Automated deployment.... in progress
-- [ ] Unit Test (would be apart of a CI pipeline)... in progress
+- [x] Automated deployment with ansible. 
+- [x] Automated build from source with ansible
+- [x] Automated export of container image with ansible
+
 
 # Requirements/Dependencies
 - Python >= 3.6
